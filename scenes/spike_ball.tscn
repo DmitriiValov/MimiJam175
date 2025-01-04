@@ -1,56 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://5iipgk4si3qv"]
+[gd_scene load_steps=6 format=3 uid="uid://5iipgk4si3qv"]
 
+[ext_resource type="Script" path="res://scripts/spike_ball.gd" id="1_p1nsq"]
 [ext_resource type="Script" path="res://scripts/trap.gd" id="1_s73d5"]
 [ext_resource type="Texture2D" uid="uid://bn7rbdjg7fg6d" path="res://assets/textures/other/Spiked Ball.png" id="2_v1sya"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hs7xx"]
 radius = 10.198
 
-[sub_resource type="Animation" id="Animation_ql6ci"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_f1iwy"]
-resource_name = "move"
-length = 2.0
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Area2D:position")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(100, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_etci7"]
-_data = {
-"RESET": SubResource("Animation_ql6ci"),
-"move": SubResource("Animation_f1iwy")
-}
 
-[node name="SpikeBall" type="Node2D" groups=["traps"]]
-script = ExtResource("1_s73d5")
+[node name="SpikeBall" type="Node2D"]
+script = ExtResource("1_p1nsq")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["traps"]]
 collision_layer = 8
 collision_mask = 2
+script = ExtResource("1_s73d5")
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D"]
 texture = ExtResource("2_v1sya")
@@ -62,6 +27,5 @@ shape = SubResource("CircleShape2D_hs7xx")
 libraries = {
 "": SubResource("AnimationLibrary_etci7")
 }
-autoplay = "move"
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

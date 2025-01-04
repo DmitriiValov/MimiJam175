@@ -9,7 +9,7 @@ var coin = preload("res://assets/audio/coin.wav")
 
 func _ready() -> void:
 	music_player.connect("finished", Callable(self,"_on_loop_sound").bind(music_player))
-	#music_player.play()
+	music_player.play()
 	
 func play_sfx(sfx_name: String):
 	var stream = null

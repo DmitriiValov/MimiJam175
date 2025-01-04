@@ -47,7 +47,7 @@ _data = {
 
 [node name="Saw" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." groups=["traps"]]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_lv3b2")
 hframes = 8
 

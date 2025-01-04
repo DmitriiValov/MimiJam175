@@ -1,0 +1,160 @@
+[gd_scene load_steps=19 format=3 uid="uid://chq31ulyf4jfw"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_7bkog"]
+[ext_resource type="Texture2D" uid="uid://dipo2xck07ldp" path="res://assets/textures/player/Cat.png" id="5_jddji"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3hpwn"]
+size = Vector2(15, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvk4e"]
+atlas = ExtResource("5_jddji")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fio3"]
+atlas = ExtResource("5_jddji")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r0d4j"]
+atlas = ExtResource("5_jddji")
+region = Rect2(96, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q340k"]
+atlas = ExtResource("5_jddji")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le661"]
+atlas = ExtResource("5_jddji")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcs8s"]
+atlas = ExtResource("5_jddji")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnuws"]
+atlas = ExtResource("5_jddji")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7sct7"]
+atlas = ExtResource("5_jddji")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngau5"]
+atlas = ExtResource("5_jddji")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0q7ea"]
+atlas = ExtResource("5_jddji")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6i0kv"]
+atlas = ExtResource("5_jddji")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3sbs"]
+atlas = ExtResource("5_jddji")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsym0"]
+atlas = ExtResource("5_jddji")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4irfs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvk4e")
+}],
+"loop": true,
+"name": &"fall",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fio3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r0d4j")
+}],
+"loop": true,
+"name": &"jump",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q340k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le661")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcs8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnuws")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7sct7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ngau5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0q7ea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6i0kv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3sbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsym0")
+}],
+"loop": true,
+"name": &"run",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2w1g"]
+size = Vector2(15.2, 12.2)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+position = Vector2(0, -16)
+scale = Vector2(1.5, 1.5)
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_7bkog")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3hpwn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+sprite_frames = SubResource("SpriteFrames_4irfs")
+animation = &"run"
+autoplay = "idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 280
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1.19209e-07, 0)
+shape = SubResource("RectangleShape2D_j2w1g")
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.12
+
+[node name="CanDashTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="CanDashTimer" to="." method="_on_can_dash_timer_timeout"]

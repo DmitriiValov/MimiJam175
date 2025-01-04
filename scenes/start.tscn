@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://mvlecmocoyrg"]
+
+[ext_resource type="Script" path="res://scripts/start.gd" id="1_3gwht"]
+[ext_resource type="Texture2D" uid="uid://qsgx0t0k0v1h" path="res://assets/textures/other/Start.png" id="1_oj0gl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p40e8"]
+atlas = ExtResource("1_oj0gl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_twe6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p40e8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qmxcq"]
+size = Vector2(34, 1)
+
+[node name="Start" type="StaticBody2D"]
+script = ExtResource("1_3gwht")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -32)
+sprite_frames = SubResource("SpriteFrames_twe6x")
+autoplay = "default"
+frame_progress = 0.32733
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(13, -0.5)
+shape = SubResource("RectangleShape2D_qmxcq")
+
+[node name="SpawnPosition" type="Marker2D" parent="."]
+position = Vector2(15, -44)

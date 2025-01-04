@@ -105,7 +105,7 @@ func reset():
 	animated_sprite.flip_v = false
 	animated_sprite.position = Vector2(0.0, -10.0)
 
-func _on_area_2d_body_entered() -> void:
+func _on_area_2d_body_entered(_body: Node2D) -> void:
 	touched_player.emit()
 
 func _on_dash_timer_timeout() -> void:

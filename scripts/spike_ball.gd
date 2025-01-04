@@ -6,7 +6,6 @@ extends Node2D
 @export var new_postion = Vector2(100.0, 0.0)
 @export var duration = 1.0
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 		var anim_lib = AnimationLibrary.new()
 	

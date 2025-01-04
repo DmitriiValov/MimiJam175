@@ -1,0 +1,138 @@
+[gd_scene load_steps=24 format=4 uid="uid://bioeacvhfvim"]
+
+[ext_resource type="Script" path="res://scripts/level.gd" id="1_2ojvn"]
+[ext_resource type="PackedScene" uid="uid://chq31ulyf4jfw" path="res://scenes/player.tscn" id="2_7pis6"]
+[ext_resource type="PackedScene" uid="uid://dh34n1riecq2e" path="res://scenes/level2.tscn" id="2_t7bh2"]
+[ext_resource type="PackedScene" uid="uid://v5ad4ac8qqtf" path="res://scenes/bg.tscn" id="2_v23kh"]
+[ext_resource type="PackedScene" uid="uid://b13sctm3eklie" path="res://scenes/ui_layer.tscn" id="3_pwa3o"]
+[ext_resource type="Texture2D" uid="uid://b521t82ry6w4t" path="res://assets/textures/bg/Gray.png" id="3_wvcua"]
+[ext_resource type="PackedScene" uid="uid://0cii2tumbcwq" path="res://scenes/jump_pad.tscn" id="4_6yujh"]
+[ext_resource type="PackedScene" uid="uid://cisoml5n5tq12" path="res://scenes/saw.tscn" id="4_xpon8"]
+[ext_resource type="PackedScene" uid="uid://bhujgdpciklds" path="res://scenes/deathzone.tscn" id="5_3dqoq"]
+[ext_resource type="PackedScene" uid="uid://5iipgk4si3qv" path="res://scenes/spike_ball.tscn" id="5_t0v1i"]
+[ext_resource type="PackedScene" uid="uid://dutfgtxc1xgju" path="res://scenes/tile_map.tscn" id="6_5873i"]
+[ext_resource type="PackedScene" uid="uid://mvlecmocoyrg" path="res://scenes/start.tscn" id="9_ur6it"]
+[ext_resource type="PackedScene" uid="uid://bhmgsuk0cyrid" path="res://scenes/exit.tscn" id="10_lfp4j"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="14_iiulm"]
+[ext_resource type="Texture2D" uid="uid://bbiwqdi3eukbj" path="res://icon.svg" id="15_bw4rh"]
+[ext_resource type="FontFile" uid="uid://d16hirl0bpmo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="16_nh8xm"]
+[ext_resource type="PackedScene" uid="uid://dib40up5j3dnq" path="res://scenes/coin.tscn" id="17_b8hfu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_827oh"]
+line_spacing = 1.0
+font = ExtResource("16_nh8xm")
+font_size = 8
+outline_color = Color(0.13, 0.13, 0.13, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cfifh"]
+frequency = 0.0126
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gkdko"]
+noise = SubResource("FastNoiseLite_cfifh")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t21mr"]
+seed = 3
+frequency = 0.0089
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yyscj"]
+noise = SubResource("FastNoiseLite_t21mr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6yvf2"]
+shader = ExtResource("14_iiulm")
+shader_parameter/offset1 = Vector2(0.1, 0.1)
+shader_parameter/offset2 = Vector2(0.2, 0.2)
+shader_parameter/distortion_strength = 0.015
+shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_gkdko")
+shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_yyscj")
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_2ojvn")
+next_level = ExtResource("2_t7bh2")
+
+[node name="TimerLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 32.0
+offset_top = 191.0
+offset_right = 166.0
+offset_bottom = 214.0
+grow_horizontal = 2
+text = "Нажми вверх для прыжка!
+"
+label_settings = SubResource("LabelSettings_827oh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UILayer" parent="." instance=ExtResource("3_pwa3o")]
+
+[node name="BG" parent="." instance=ExtResource("2_v23kh")]
+bg_rexture = ExtResource("3_wvcua")
+scroll_speed = 10
+
+[node name="DeathzoneDown" parent="." instance=ExtResource("5_3dqoq")]
+position = Vector2(-129, 350)
+
+[node name="DeathzoneUp" parent="." instance=ExtResource("5_3dqoq")]
+position = Vector2(464, -189)
+rotation = 3.14159
+
+[node name="StartPosition" type="Marker2D" parent="."]
+position = Vector2(559, 147)
+
+[node name="Traps" type="Node2D" parent="."]
+
+[node name="Saw" parent="Traps" groups=["traps"] instance=ExtResource("4_xpon8")]
+position = Vector2(1538, 113)
+
+[node name="Saw2" parent="Traps" groups=["traps"] instance=ExtResource("4_xpon8")]
+position = Vector2(1556, 39)
+
+[node name="SpikeBall" parent="Traps" instance=ExtResource("5_t0v1i")]
+position = Vector2(1412, 32)
+
+[node name="SpikeBall2" parent="Traps" instance=ExtResource("5_t0v1i")]
+position = Vector2(1440, 129)
+
+[node name="Saw3" parent="Traps" groups=["traps"] instance=ExtResource("4_xpon8")]
+position = Vector2(495, 205)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="JumpPad" parent="Objects" instance=ExtResource("4_6yujh")]
+position = Vector2(585, 226)
+
+[node name="JumpPad2" parent="Objects" instance=ExtResource("4_6yujh")]
+position = Vector2(1424, 222)
+jump_force = -300
+
+[node name="TileMap" parent="." instance=ExtResource("6_5873i")]
+tile_map_data = PackedByteArray("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")
+
+[node name="Exit" parent="." instance=ExtResource("10_lfp4j")]
+position = Vector2(1523, 257)
+
+[node name="Player" parent="." instance=ExtResource("2_7pis6")]
+position = Vector2(178, 106)
+collision_mask = 5
+
+[node name="Start" parent="." instance=ExtResource("9_ur6it")]
+position = Vector2(159, 144)
+
+[node name="Water" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_6yvf2")
+position = Vector2(263, 213)
+scale = Vector2(3.70312, 1.48438)
+texture = ExtResource("15_bw4rh")
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="coin" parent="Coins" instance=ExtResource("17_b8hfu")]
+position = Vector2(294, 216)
+
+[node name="coin2" parent="Coins" instance=ExtResource("17_b8hfu")]
+position = Vector2(278, 216)
+
+[node name="coin3" parent="Coins" instance=ExtResource("17_b8hfu")]
+position = Vector2(262, 216)

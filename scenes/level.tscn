@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://bioeacvhfvim"]
+[gd_scene load_steps=24 format=4 uid="uid://bioeacvhfvim"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_2ojvn"]
 [ext_resource type="PackedScene" uid="uid://chq31ulyf4jfw" path="res://scenes/player.tscn" id="2_7pis6"]
@@ -16,6 +16,7 @@
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="14_iiulm"]
 [ext_resource type="Texture2D" uid="uid://bbiwqdi3eukbj" path="res://icon.svg" id="15_bw4rh"]
 [ext_resource type="FontFile" uid="uid://d16hirl0bpmo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="16_nh8xm"]
+[ext_resource type="PackedScene" uid="uid://dib40up5j3dnq" path="res://scenes/coin.tscn" id="17_b8hfu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_827oh"]
 line_spacing = 1.0
@@ -157,3 +158,14 @@ material = SubResource("ShaderMaterial_6yvf2")
 position = Vector2(263, 213)
 scale = Vector2(3.70312, 1.48438)
 texture = ExtResource("15_bw4rh")
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="coin" parent="Coins" instance=ExtResource("17_b8hfu")]
+position = Vector2(294, 216)
+
+[node name="coin2" parent="Coins" instance=ExtResource("17_b8hfu")]
+position = Vector2(278, 216)
+
+[node name="coin3" parent="Coins" instance=ExtResource("17_b8hfu")]
+position = Vector2(262, 216)

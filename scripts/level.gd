@@ -27,13 +27,13 @@ func _ready() -> void:
 	for trap in traps:
 		trap.connect("touched_player", _on_trap_touched_player)
 	player.connect("touched_player", _on_trap_touched_player)
-	exit.body_entered.connect(_on_exit_body_entered)	
+	exit.body_entered.connect(_on_exit_body_entered)
 	death_zone_down.body_entered.connect(_on_deathzone_body_entered)
 	death_zone_up.body_entered.connect(_on_deathzone_body_entered)
-	
+
 	time_left = level_time
 	hud.set_time_label(time_left)
-	
+
 	timer_node = Timer.new()
 	timer_node.name = "Level Timer"
 	timer_node.wait_time = 1
@@ -41,6 +41,12 @@ func _ready() -> void:
 	add_child(timer_node)
 	timer_node.start()
 
+	var coins = get_tree().get_nodes_in_group("coins")
+	for coin in coins:
+		coin.coin_collected.connect(_on_coin_collected)
+
+func _on_coin_collected():
+		hud.add_coin()
 
 func _on_level_timer_timeout():
 	if win == false:
@@ -68,10 +74,11 @@ func _on_deathzone_body_entered(_body: CharacterBody2D) -> void:
 func _on_trap_touched_player() -> void:
 	audio_player.play_sfx("hurt")
 	reset_player()
-	
+
 func reset_player():
 	player.velocity = Vector2.ZERO
 	player.global_position = start_position.get_spawn_position()
+	hud.set_coins_label(0)
 	player.reset()
 
 func _on_exit_body_entered(body):

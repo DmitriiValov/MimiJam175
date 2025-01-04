@@ -11,7 +11,7 @@ func _ready() -> void:
 		var anim_lib = AnimationLibrary.new()
 	
 		var anim = Animation.new()
-		anim.length = 2.0
+		anim.length = duration * 2
 		anim.loop_mode = 1
 		anim.step = 0.1
 		
@@ -25,5 +25,5 @@ func _ready() -> void:
 		anim.track_insert_key(track_index, duration, new_postion)
 		
 		anim_lib.add_animation("move", anim)
-		animation_player.add_animation_library("lib", anim_lib)		
+		animation_player.add_animation_library("lib", anim_lib)
 		animation_player.play("lib/move")

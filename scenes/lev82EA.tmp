@@ -48,6 +48,8 @@ shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_yyscj")
 [node name="Level" type="Node2D"]
 script = ExtResource("1_2ojvn")
 next_level = ExtResource("2_t7bh2")
+level_time = null
+is_final_level = null
 
 [node name="TimerLabel" type="Label" parent="."]
 anchors_preset = 5

@@ -11,7 +11,6 @@ func _ready() -> void:
 		var anim_lib = AnimationLibrary.new()
 	
 		var anim = Animation.new()
-		anim.resource_name = "move1"
 		anim.length = 2.0
 		anim.loop_mode = 1
 		anim.step = 0.1

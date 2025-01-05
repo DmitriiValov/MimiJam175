@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://chq31ulyf4jfw"]
+[gd_scene load_steps=20 format=3 uid="uid://chq31ulyf4jfw"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_7bkog"]
+[ext_resource type="Texture2D" uid="uid://crn5x3xa8vsx2" path="res://assets/textures/player/glow.png" id="2_5w5r6"]
 [ext_resource type="Texture2D" uid="uid://dipo2xck07ldp" path="res://assets/textures/player/Cat.png" id="5_jddji"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3hpwn"]
@@ -130,6 +131,10 @@ collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_7bkog")
 
+[node name="Glow" type="Sprite2D" parent="."]
+position = Vector2(0.666667, -6)
+texture = ExtResource("2_5w5r6")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3hpwn")
 
@@ -154,6 +159,7 @@ shape = SubResource("RectangleShape2D_j2w1g")
 wait_time = 0.12
 
 [node name="CanDashTimer" type="Timer" parent="."]
+wait_time = 2.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_dash_timer_timeout"]

@@ -4,12 +4,13 @@ class_name Player
 signal touched_player
 
 const SPEED = 110.0
-const DASH_SPEED = 800.0
+const DASH_SPEED = 900.0
 const JUMP_VELOCITY = -400.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var dash_timer = $DashTimer
 @onready var can_dash_timer = $CanDashTimer
+@onready var glow_sprite = $Glow
 
 var active = true
 var direction = 1
@@ -95,6 +96,7 @@ func change_gravity():
 			
 func dash():
 	if Input.is_action_just_pressed("dash") && can_dash:
+		glow_sprite.visible = false
 		dashing = true
 		can_dash = false
 		dash_timer.start()
@@ -114,3 +116,4 @@ func _on_dash_timer_timeout() -> void:
 
 func _on_can_dash_timer_timeout() -> void:
 	can_dash = true
+	glow_sprite.visible = true

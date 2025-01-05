@@ -82,7 +82,7 @@ func jump(force):
 	velocity.y = force	
 
 func change_gravity():
-	if Input.is_action_just_pressed("change_gravity"):
+	if Input.is_action_pressed("change_gravity"):
 		if gravity == false && is_on_ceiling() == true:
 			gravity = true
 			AudioPlayer.play_sfx("jump")

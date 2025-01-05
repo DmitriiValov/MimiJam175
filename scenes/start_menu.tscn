@@ -6,7 +6,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_8abiv"]
 font = ExtResource("1_3j0gt")
-font_size = 52
+font_size = 48
 font_color = Color(0, 0, 0, 1)
 outline_size = 13
 
@@ -36,7 +36,7 @@ offset_right = 188.0
 offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "GRAVICAT"
+text = "GRAVITYCAT"
 label_settings = SubResource("LabelSettings_8abiv")
 horizontal_alignment = 1
 

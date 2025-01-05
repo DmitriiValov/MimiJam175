@@ -47,7 +47,8 @@ func _ready() -> void:
 		coin.coin_collected.connect(_on_coin_collected)
 
 func _on_coin_collected():
-		hud.add_coin()
+	hud.add_coin()
+	GameManager.add_coin(level_name)
 
 func _on_level_timer_timeout():
 	if win == false:

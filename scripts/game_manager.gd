@@ -10,7 +10,7 @@ var collected_coins = {
 
 var max_coins_per_level = {
     "level1": 15,
-    "level2": 1,
+    "level2": 11,
     "level3": 13,
     "level4": 17
 }

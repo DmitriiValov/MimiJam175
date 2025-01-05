@@ -88,7 +88,7 @@ func _enter_tree() -> void:
 						if grandchild.owner == null:
 							grandchild.set_owner(scene_root)
 		_initialize_nodes()
-		print("SpikeBall: _enter_tree called") # Отладочный вывод
+		print("SpikeBall: _enter_tree called") # Debug output
 
 func _ready() -> void:
 	if not Engine.is_editor_hint():
@@ -112,6 +112,8 @@ func _initialize_nodes() -> void:
 	area = $Area2D
 	path_line = $PathLine
 	positions_node = $Positions if has_node("Positions") else Node2D.new()
+
+	# Ensure positions_node is properly added and owned
 	if not positions_node.is_inside_tree():
 		positions_node.name = "Positions"
 		add_child(positions_node)
@@ -132,8 +134,11 @@ func _initialize_nodes() -> void:
 		positions_node.add_child(end_position)
 		end_position.owner = get_tree().edited_scene_root if Engine.is_editor_hint() else self
 		end_position.position = end_pos
+		movement_vector = end_position.position
+		movement_x = movement_vector.x
+		movement_y = movement_vector.y
 
-	# Важно! Сохраняем начальные позиции
+	# Important! Save initial positions
 	start_pos = start_position.position
 	end_pos = end_position.position
 	movement_vector = end_position.position
@@ -143,7 +148,9 @@ func _initialize_nodes() -> void:
 	if Engine.is_editor_hint():
 		_queue_update()
 	else:
-		path_line.visible = false # Принудительно скрываем path_line в игре
+		path_line.visible = false # Force hide path_line in game
+
+	print("SpikeBall: _initialize_nodes completed") # Debug output
 
 func _process(delta: float) -> void:
 	if not area or not start_position or not end_position:

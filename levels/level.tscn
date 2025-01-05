@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_2ojvn"]
 [ext_resource type="PackedScene" uid="uid://chq31ulyf4jfw" path="res://scenes/player.tscn" id="2_7pis6"]
-[ext_resource type="PackedScene" uid="uid://co3217qx18k52" path="res://levels/level2.tscn" id="2_t7bh2"]
+[ext_resource type="PackedScene" uid="uid://7g10kxy3uhs8" path="res://levels/level2.tscn" id="2_t7bh2"]
 [ext_resource type="PackedScene" uid="uid://v5ad4ac8qqtf" path="res://scenes/bg.tscn" id="2_v23kh"]
 [ext_resource type="PackedScene" uid="uid://b13sctm3eklie" path="res://scenes/ui_layer.tscn" id="3_pwa3o"]
 [ext_resource type="PackedScene" uid="uid://d3s8w3727btl1" path="res://scenes/coin.tscn" id="3_t5n2w"]
@@ -10,13 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://0cii2tumbcwq" path="res://scenes/jump_pad.tscn" id="4_6yujh"]
 [ext_resource type="PackedScene" uid="uid://cisoml5n5tq12" path="res://scenes/saw.tscn" id="4_xpon8"]
 [ext_resource type="PackedScene" uid="uid://bhujgdpciklds" path="res://scenes/deathzone.tscn" id="5_3dqoq"]
-[ext_resource type="PackedScene" uid="uid://5iipgk4si3qv" path="res://scenes/spike_ball.tscn" id="5_t0v1i"]
 [ext_resource type="PackedScene" uid="uid://dutfgtxc1xgju" path="res://scenes/tile_map.tscn" id="6_5873i"]
 [ext_resource type="PackedScene" uid="uid://mvlecmocoyrg" path="res://scenes/start.tscn" id="9_ur6it"]
 [ext_resource type="PackedScene" uid="uid://bhmgsuk0cyrid" path="res://scenes/exit.tscn" id="10_lfp4j"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="14_iiulm"]
 [ext_resource type="Texture2D" uid="uid://bbiwqdi3eukbj" path="res://icon.svg" id="15_bw4rh"]
 [ext_resource type="FontFile" uid="uid://d16hirl0bpmo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="16_nh8xm"]
+[ext_resource type="PackedScene" uid="uid://dc6ej178136ob" path="res://scenes/spikeball_trap.tscn" id="18_7y03t"]
 [ext_resource type="PackedScene" uid="uid://vue0adlmb71j" path="res://scenes/moving_platform.tscn" id="18_fidky"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_827oh"]
@@ -146,9 +146,6 @@ position = Vector2(-129, 350)
 position = Vector2(464, -189)
 rotation = 3.14159
 
-[node name="StartPosition" type="Marker2D" parent="."]
-position = Vector2(559, 147)
-
 [node name="Traps" type="Node2D" parent="."]
 
 [node name="Saw" parent="Traps" instance=ExtResource("4_xpon8")]
@@ -192,32 +189,73 @@ position = Vector2(263, 213)
 scale = Vector2(3.70312, 1.48438)
 texture = ExtResource("15_bw4rh")
 
-[node name="SpikeBall" parent="." instance=ExtResource("5_t0v1i")]
-position = Vector2(194, 113)
-
-[node name="Positions2" type="Node2D" parent="SpikeBall"]
-
-[node name="StartPosition" type="Marker2D" parent="SpikeBall/Positions2"]
-
-[node name="EndPosition" type="Marker2D" parent="SpikeBall/Positions2"]
-position = Vector2(54, 26)
-
-[node name="SpikeBall2" parent="." instance=ExtResource("5_t0v1i")]
-position = Vector2(155, 94)
-
-[node name="Positions2" type="Node2D" parent="SpikeBall2"]
-
-[node name="StartPosition" type="Marker2D" parent="SpikeBall2/Positions2"]
-
-[node name="EndPosition" type="Marker2D" parent="SpikeBall2/Positions2"]
-position = Vector2(-40, 2)
-
 [node name="MovingPlatform" parent="." instance=ExtResource("18_fidky")]
 position = Vector2(294, 94)
 duration = 4.0
-movement_vector = Vector2(100, 30)
-movement_y = 30.0
-end_pos = Vector2(100, 30)
+movement_vector = Vector2(55, 18)
+movement_x = 55.0
+movement_y = 18.0
+end_pos = Vector2(55, 18)
+
+[node name="Positions" type="Node2D" parent="MovingPlatform"]
+
+[node name="StartPosition" type="Marker2D" parent="MovingPlatform/Positions"]
+
+[node name="EndPosition" type="Marker2D" parent="MovingPlatform/Positions"]
+position = Vector2(55, 18)
 
 [node name="MovingPlatform2" parent="." instance=ExtResource("18_fidky")]
 position = Vector2(328, 134)
+movement_vector = Vector2(-145, 26)
+movement_x = -145.0
+movement_y = 26.0
+end_pos = Vector2(-145, 26)
+
+[node name="Positions" type="Node2D" parent="MovingPlatform2"]
+
+[node name="StartPosition" type="Marker2D" parent="MovingPlatform2/Positions"]
+
+[node name="EndPosition" type="Marker2D" parent="MovingPlatform2/Positions"]
+position = Vector2(-145, 26)
+
+[node name="SpikeBall" parent="." instance=ExtResource("18_7y03t")]
+position = Vector2(176, 112)
+movement_vector = Vector2(-92, 23)
+movement_x = -92.0
+movement_y = 23.0
+end_pos = Vector2(-92, 23)
+
+[node name="Positions" type="Node2D" parent="SpikeBall"]
+
+[node name="StartPosition" type="Marker2D" parent="SpikeBall/Positions"]
+
+[node name="EndPosition" type="Marker2D" parent="SpikeBall/Positions"]
+position = Vector2(-92, 23)
+
+[node name="MovingPlatform3" parent="." instance=ExtResource("18_fidky")]
+position = Vector2(412, 116)
+movement_vector = Vector2(-53, 52)
+movement_x = -53.0
+movement_y = 52.0
+end_pos = Vector2(-53, 52)
+
+[node name="Positions" type="Node2D" parent="MovingPlatform3"]
+
+[node name="StartPosition" type="Marker2D" parent="MovingPlatform3/Positions"]
+
+[node name="EndPosition" type="Marker2D" parent="MovingPlatform3/Positions"]
+position = Vector2(-53, 52)
+
+[node name="SpikeBall2" parent="." instance=ExtResource("18_7y03t")]
+position = Vector2(504, 132)
+movement_vector = Vector2(-72, 58)
+movement_x = -72.0
+movement_y = 58.0
+end_pos = Vector2(-72, 58)
+
+[node name="Positions" type="Node2D" parent="SpikeBall2"]
+
+[node name="StartPosition" type="Marker2D" parent="SpikeBall2/Positions"]
+
+[node name="EndPosition" type="Marker2D" parent="SpikeBall2/Positions"]
+position = Vector2(-72, 58)

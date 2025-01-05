@@ -12,6 +12,7 @@ extends Node2D
 @export var next_level: PackedScene = null
 @export var level_time = 200
 @export var is_final_level: bool = false
+@export var level_name: String = "level1"
 
 var player = null
 var timer_node = null
@@ -86,14 +87,19 @@ func _on_exit_body_entered(body):
 		load_next_level()
 
 func load_next_level():
-	if is_final_level || next_level != null:
+	if next_level != null:
 		exit.animate()
 		audio_player.play_sfx("win")
 		win = true
 		player.active = false
 		player.die()
 		await get_tree().create_timer(1.5).timeout
-		if is_final_level:
-			ui_layer.show_win_screen(true)
-		else:
-			get_tree().change_scene_to_packed(next_level)
+		get_tree().change_scene_to_packed(next_level)
+	elif is_final_level:
+		exit.animate()
+		audio_player.play_sfx("win")
+		win = true
+		player.active = false
+		player.die()
+		await get_tree().create_timer(1.5).timeout
+		ui_layer.show_win_screen(true)

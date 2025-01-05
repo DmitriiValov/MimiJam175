@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var win_screen = $WinScreen
 
-func show_win_screen(flag: bool):
-	$WinScreen.visible = flag
+func show_win_screen(value: bool):
+	if win_screen:
+		win_screen.visible = value

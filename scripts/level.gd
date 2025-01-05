@@ -87,19 +87,14 @@ func _on_exit_body_entered(body):
 		load_next_level()
 
 func load_next_level():
-	if next_level != null:
+	if is_final_level || next_level != null:
 		exit.animate()
 		audio_player.play_sfx("win")
 		win = true
 		player.active = false
 		player.die()
 		await get_tree().create_timer(1.5).timeout
-		get_tree().change_scene_to_packed(next_level)
-	elif is_final_level:
-		exit.animate()
-		audio_player.play_sfx("win")
-		win = true
-		player.active = false
-		player.die()
-		await get_tree().create_timer(1.5).timeout
-		ui_layer.show_win_screen(true)
+		if is_final_level && ui_layer != null:
+			ui_layer.show_win_screen(true)
+		elif next_level != null:
+			get_tree().change_scene_to_packed(next_level)

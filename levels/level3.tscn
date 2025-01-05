@@ -22,6 +22,7 @@
 line_spacing = 1.0
 font = ExtResource("4_xmtfy")
 font_size = 10
+outline_size = 3
 outline_color = Color(0.13, 0.13, 0.13, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cfifh"]
@@ -141,7 +142,6 @@ vertical_alignment = 1
 [node name="UILayer" parent="." instance=ExtResource("3_c430d")]
 
 [node name="BG" parent="." instance=ExtResource("2_v23kh")]
-visible = false
 bg_rexture = ExtResource("7_4i4mh")
 scroll_speed = 10
 

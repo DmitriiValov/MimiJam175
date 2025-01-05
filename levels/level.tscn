@@ -22,12 +22,14 @@
 line_spacing = 1.0
 font = ExtResource("16_nh8xm")
 font_size = 10
+outline_size = 3
 outline_color = Color(0.13, 0.13, 0.13, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_c8inc"]
 line_spacing = 1.0
 font = ExtResource("16_nh8xm")
 font_size = 10
+outline_size = 3
 outline_color = Color(0.13, 0.13, 0.13, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cfifh"]
@@ -187,7 +189,6 @@ vertical_alignment = 1
 [node name="UILayer" parent="." instance=ExtResource("3_pwa3o")]
 
 [node name="BG" parent="." instance=ExtResource("2_v23kh")]
-visible = false
 bg_rexture = ExtResource("3_wvcua")
 scroll_speed = 10
 

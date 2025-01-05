@@ -8,12 +8,8 @@ size = Vector2(34, 10)
 
 [node name="MovingPlatform" type="Node2D"]
 script = ExtResource("1_script")
-duration = 15.0
-transition_type = "Quad"
-ease_type = "InOut"
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
-collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
@@ -29,3 +25,10 @@ z_index = -1
 points = PackedVector2Array(0, 0)
 width = 2.0
 default_color = Color(1, 1, 1, 0.3)
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="StartPosition" type="Marker2D" parent="Positions"]
+
+[node name="EndPosition" type="Marker2D" parent="Positions"]
+position = Vector2(100, 0)

@@ -24,7 +24,7 @@ shape = SubResource("CircleShape2D_hs7xx")
 
 [node name="PathLine" type="Line2D" parent="."]
 z_index = -1
-points = PackedVector2Array(0, 0)
+points = PackedVector2Array(0, 0, 0.725, 0, 2.8, 0, 6.075, 0, 10.4, 0, 15.625, 0, 21.6, 0, 28.175, 0, 35.2, 0, 42.525, 0, 50, 0, 57.475, 0, 64.8, 0, 71.825, 0, 78.4, 0, 84.375, 0, 89.6, 0, 93.925, 0, 97.2, 0, 99.275, 0, 100, 0)
 width = 2.0
 default_color = Color(1, 1, 1, 0.3)
 

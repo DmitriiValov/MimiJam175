@@ -3,12 +3,56 @@ extends Node2D
 
 signal position_changed
 
+var platform: AnimatableBody2D
+var path_line: Line2D
+var positions_node: Node2D
+var start_position: Marker2D
+var end_position: Marker2D
+var dragging_start: bool = false
+var dragging_end: bool = false
+var _update_queued: bool = false
+var time: float = 0.0
+
 @export_range(0.1, 20.0, 0.1) var duration: float = 15.0:
     set(value):
         duration = value
         _queue_update()
 
-@export_group("Movement")
+@export_range(0.0, 1.0, 0.01) var start_offset: float = 0.0:
+    set(value):
+        start_offset = value
+        if Engine.is_editor_hint():
+            _queue_update()
+
+@export_enum("Linear", "Quad", "Cubic", "Quart", "Quint", "Sine", "Expo", "Circ", "Back", "Bounce", "Elastic") var transition_type: String = "Quad":
+    set(value):
+        transition_type = value
+        _queue_update()
+
+@export_enum("In", "Out", "InOut", "OutIn") var ease_type: String = "InOut":
+    set(value):
+        ease_type = value
+        _queue_update()
+
+@export_group("Position Markers")
+@export var start_pos: Vector2 = Vector2.ZERO:
+    set(value):
+        start_pos = value
+        if start_position:
+            start_position.position = value
+            _queue_update()
+
+@export var end_pos: Vector2 = Vector2(100, 0):
+    set(value):
+        end_pos = value
+        if end_position:
+            end_position.position = value
+            movement_vector = value
+            movement_x = value.x
+            movement_y = value.y
+            _queue_update()
+
+@export_group("Movement", "movement_")
 @export var movement_vector: Vector2 = Vector2(100, 0):
     set(value):
         movement_vector = value
@@ -30,47 +74,6 @@ signal position_changed
             movement_vector.y = value
             _queue_update()
 
-@export_range(0.0, 1.0, 0.01) var start_offset: float = 0.0:
-    set(value):
-        start_offset = value
-        if Engine.is_editor_hint():
-            _queue_update()
-
-@export var start_pos: Vector2 = Vector2.ZERO:
-    set(value):
-        start_pos = value
-        if start_position:
-            start_position.position = value
-
-@export var end_pos: Vector2 = Vector2(100, 0):
-    set(value):
-        end_pos = value
-        if end_position:
-            end_position.position = value
-            movement_vector = value
-            movement_x = value.x
-            movement_y = value.y
-
-@export_enum("Linear", "Quad", "Cubic", "Quart", "Quint", "Sine", "Expo", "Circ", "Back", "Bounce", "Elastic") var transition_type: String = "Quad":
-    set(value):
-        transition_type = value
-        _queue_update()
-
-@export_enum("In", "Out", "InOut", "OutIn") var ease_type: String = "InOut":
-    set(value):
-        ease_type = value
-        _queue_update()
-
-var platform: AnimatableBody2D
-var path_line: Line2D
-var positions_node: Node2D
-var start_position: Marker2D
-var end_position: Marker2D
-var dragging_start: bool = false
-var dragging_end: bool = false
-var _update_queued: bool = false
-var time: float = 0.0
-
 func _enter_tree() -> void:
     if Engine.is_editor_hint():
         var scene_root = get_tree().edited_scene_root
@@ -82,6 +85,7 @@ func _enter_tree() -> void:
                         if grandchild.owner == null:
                             grandchild.set_owner(scene_root)
         _initialize_nodes()
+        print("MovingPlatform: _enter_tree called") # Debug output
 
 func _ready() -> void:
     if not Engine.is_editor_hint():
@@ -141,7 +145,7 @@ func _initialize_nodes() -> void:
     if Engine.is_editor_hint():
         _queue_update()
     else:
-        path_line.visible = false # Force hide path_line in game
+        path_line.visible = false
 
     print("MovingPlatform: _initialize_nodes completed") # Debug output
 

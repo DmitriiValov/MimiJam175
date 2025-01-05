@@ -8,6 +8,10 @@ var path_line: Line2D
 var positions_node: Node2D
 var start_position: Marker2D
 var end_position: Marker2D
+var dragging_start: bool = false
+var dragging_end: bool = false
+var _update_queued: bool = false
+var time: float = 0.0
 
 @export_range(0.1, 10.0, 0.1) var duration: float = 1.0:
 	set(value):
@@ -71,11 +75,6 @@ var end_position: Marker2D
 			movement_x = value.x
 			movement_y = value.y
 			_queue_update()
-
-var dragging_start: bool = false
-var dragging_end: bool = false
-var _update_queued: bool = false
-var time: float = 0.0
 
 func _enter_tree() -> void:
 	if Engine.is_editor_hint():

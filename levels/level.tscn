@@ -190,72 +190,29 @@ scale = Vector2(3.70312, 1.48438)
 texture = ExtResource("15_bw4rh")
 
 [node name="MovingPlatform" parent="." instance=ExtResource("18_fidky")]
-position = Vector2(294, 94)
-duration = 4.0
-movement_vector = Vector2(55, 18)
-movement_x = 55.0
-movement_y = 18.0
-end_pos = Vector2(55, 18)
+position = Vector2(235, 106)
+end_pos = Vector2(-93, 74)
+movement_vector = Vector2(-93, 74)
+movement_x = -93.0
+movement_y = 74.0
 
 [node name="Positions" type="Node2D" parent="MovingPlatform"]
 
 [node name="StartPosition" type="Marker2D" parent="MovingPlatform/Positions"]
 
 [node name="EndPosition" type="Marker2D" parent="MovingPlatform/Positions"]
-position = Vector2(55, 18)
+position = Vector2(-93, 74)
 
-[node name="MovingPlatform2" parent="." instance=ExtResource("18_fidky")]
-position = Vector2(328, 134)
-movement_vector = Vector2(-145, 26)
-movement_x = -145.0
-movement_y = 26.0
-end_pos = Vector2(-145, 26)
+[node name="SpikeBall" parent="MovingPlatform/Positions" instance=ExtResource("18_7y03t")]
+position = Vector2(-92, -15)
+movement_vector = Vector2(20, 60)
+movement_x = 20.0
+movement_y = 60.0
+end_pos = Vector2(20, 60)
 
-[node name="Positions" type="Node2D" parent="MovingPlatform2"]
+[node name="Positions" type="Node2D" parent="MovingPlatform/Positions/SpikeBall"]
 
-[node name="StartPosition" type="Marker2D" parent="MovingPlatform2/Positions"]
+[node name="StartPosition" type="Marker2D" parent="MovingPlatform/Positions/SpikeBall/Positions"]
 
-[node name="EndPosition" type="Marker2D" parent="MovingPlatform2/Positions"]
-position = Vector2(-145, 26)
-
-[node name="SpikeBall" parent="." instance=ExtResource("18_7y03t")]
-position = Vector2(176, 112)
-movement_vector = Vector2(-92, 23)
-movement_x = -92.0
-movement_y = 23.0
-end_pos = Vector2(-92, 23)
-
-[node name="Positions" type="Node2D" parent="SpikeBall"]
-
-[node name="StartPosition" type="Marker2D" parent="SpikeBall/Positions"]
-
-[node name="EndPosition" type="Marker2D" parent="SpikeBall/Positions"]
-position = Vector2(-92, 23)
-
-[node name="MovingPlatform3" parent="." instance=ExtResource("18_fidky")]
-position = Vector2(412, 116)
-movement_vector = Vector2(-53, 52)
-movement_x = -53.0
-movement_y = 52.0
-end_pos = Vector2(-53, 52)
-
-[node name="Positions" type="Node2D" parent="MovingPlatform3"]
-
-[node name="StartPosition" type="Marker2D" parent="MovingPlatform3/Positions"]
-
-[node name="EndPosition" type="Marker2D" parent="MovingPlatform3/Positions"]
-position = Vector2(-53, 52)
-
-[node name="SpikeBall2" parent="." instance=ExtResource("18_7y03t")]
-position = Vector2(504, 132)
-movement_vector = Vector2(-72, 58)
-movement_x = -72.0
-movement_y = 58.0
-end_pos = Vector2(-72, 58)
-
-[node name="Positions" type="Node2D" parent="SpikeBall2"]
-
-[node name="StartPosition" type="Marker2D" parent="SpikeBall2/Positions"]
-
-[node name="EndPosition" type="Marker2D" parent="SpikeBall2/Positions"]
-position = Vector2(-72, 58)
+[node name="EndPosition" type="Marker2D" parent="MovingPlatform/Positions/SpikeBall/Positions"]
+position = Vector2(20, 60)

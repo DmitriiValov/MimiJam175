@@ -40,7 +40,8 @@ func _physics_process(delta: float) -> void:
 			jump(-JUMP_VELOCITY)
 			AudioPlayer.play_sfx("jump")
 						
-		#direction = Input.get_axis("move_left", "move_right")
+		if Input.get_axis("move_left", "move_right") != 0:
+			direction = Input.get_axis("move_left", "move_right")
 								
 		if is_on_wall():
 			direction *= -1

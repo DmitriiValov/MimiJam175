@@ -117,3 +117,6 @@ func _on_dash_timer_timeout() -> void:
 func _on_can_dash_timer_timeout() -> void:
 	can_dash = true
 	glow_sprite.visible = true
+	
+func die():
+	direction = 0

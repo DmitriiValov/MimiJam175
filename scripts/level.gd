@@ -91,6 +91,7 @@ func load_next_level():
 		audio_player.play_sfx("win")
 		win = true
 		player.active = false
+		player.die()
 		await get_tree().create_timer(1.5).timeout
 		if is_final_level:
 			ui_layer.show_win_screen(true)

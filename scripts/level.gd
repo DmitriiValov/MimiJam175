@@ -62,6 +62,8 @@ func _process(_delta: float) -> void:
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
+	elif Input.is_action_just_pressed("skip_level"):
+		load_next_level()
 
 
 func _on_deathzone_body_entered(_body: CharacterBody2D) -> void:
@@ -81,13 +83,16 @@ func reset_player():
 
 func _on_exit_body_entered(body):
 	if body is Player:
-		if is_final_level || next_level != null:
-			exit.animate()
-			audio_player.play_sfx("win")
-			win = true
-			player.active = false
-			await get_tree().create_timer(1.5).timeout
-			if is_final_level:
-				ui_layer.show_win_screen(true)
-			else:
-				get_tree().change_scene_to_packed(next_level)
+		load_next_level()
+
+func load_next_level():
+	if is_final_level || next_level != null:
+		exit.animate()
+		audio_player.play_sfx("win")
+		win = true
+		player.active = false
+		await get_tree().create_timer(1.5).timeout
+		if is_final_level:
+			ui_layer.show_win_screen(true)
+		else:
+			get_tree().change_scene_to_packed(next_level)

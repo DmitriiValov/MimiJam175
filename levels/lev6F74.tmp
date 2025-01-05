@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://bioeacvhfvim"]
+[gd_scene load_steps=24 format=4 uid="uid://bioeacvhfvim"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_2ojvn"]
 [ext_resource type="PackedScene" uid="uid://chq31ulyf4jfw" path="res://scenes/player.tscn" id="2_7pis6"]
@@ -17,7 +17,6 @@
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="14_iiulm"]
 [ext_resource type="Texture2D" uid="uid://bbiwqdi3eukbj" path="res://icon.svg" id="15_bw4rh"]
 [ext_resource type="FontFile" uid="uid://d16hirl0bpmo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="16_nh8xm"]
-[ext_resource type="PackedScene" uid="uid://vue0adlmb71j" path="res://scenes/moving_platform.tscn" id="18_fidky"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_827oh"]
 line_spacing = 1.0
@@ -193,31 +192,11 @@ scale = Vector2(3.70312, 1.48438)
 texture = ExtResource("15_bw4rh")
 
 [node name="SpikeBall" parent="." instance=ExtResource("5_t0v1i")]
-position = Vector2(194, 113)
+position = Vector2(252, 116)
 
-[node name="Positions2" type="Node2D" parent="SpikeBall"]
+[node name="Positions" type="Node2D" parent="SpikeBall"]
 
-[node name="StartPosition" type="Marker2D" parent="SpikeBall/Positions2"]
+[node name="StartPosition" type="Marker2D" parent="SpikeBall/Positions"]
 
-[node name="EndPosition" type="Marker2D" parent="SpikeBall/Positions2"]
-position = Vector2(54, 26)
-
-[node name="SpikeBall2" parent="." instance=ExtResource("5_t0v1i")]
-position = Vector2(155, 94)
-
-[node name="Positions2" type="Node2D" parent="SpikeBall2"]
-
-[node name="StartPosition" type="Marker2D" parent="SpikeBall2/Positions2"]
-
-[node name="EndPosition" type="Marker2D" parent="SpikeBall2/Positions2"]
-position = Vector2(-40, 2)
-
-[node name="MovingPlatform" parent="." instance=ExtResource("18_fidky")]
-position = Vector2(294, 94)
-duration = 4.0
-movement_vector = Vector2(100, 30)
-movement_y = 30.0
-end_pos = Vector2(100, 30)
-
-[node name="MovingPlatform2" parent="." instance=ExtResource("18_fidky")]
-position = Vector2(328, 134)
+[node name="EndPosition" type="Marker2D" parent="SpikeBall/Positions"]
+position = Vector2(61, -11)

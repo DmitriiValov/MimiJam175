@@ -4,14 +4,19 @@
 [ext_resource type="Script" path="res://scripts/trap.gd" id="1_s73d5"]
 [ext_resource type="Texture2D" uid="uid://bn7rbdjg7fg6d" path="res://assets/textures/other/Spiked Ball.png" id="2_v1sya"]
 
+[sub_resource type="Curve" id="Curve_dls2h"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 1.4, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_hs7xx"]
 radius = 10.198
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_etci7"]
 
 [node name="SpikeBall" type="Node2D"]
 script = ExtResource("1_p1nsq")
 duration = 2.0
+easing_curve = SubResource("Curve_dls2h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="Area2D" type="Area2D" parent="." groups=["traps"]]
 collision_layer = 8
@@ -24,9 +29,17 @@ texture = ExtResource("2_v1sya")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_hs7xx")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_etci7")
-}
+[node name="PathLine" type="Line2D" parent="."]
+z_index = -1
+points = PackedVector2Array(0, 0, 6.71, 0, 12.88, 0, 18.57, 0, 23.84, 0, 28.75, 0, 33.36, 0, 37.73, 0, 41.92, 0, 45.99, 0, 50, 0, 54.01, 0, 58.08, 0, 62.27, 0, 66.64, 0, 71.25, 0, 76.16, 0, 81.43, 0, 87.12, 0, 93.29, 0, 100, 0)
+width = 2.0
+default_color = Color(1, 1, 1, 0.3)
+
+[node name="Positions" type="Node2D" parent="."]
+
+[node name="StartPosition" type="Marker2D" parent="Positions"]
+
+[node name="EndPosition" type="Marker2D" parent="Positions"]
+position = Vector2(100, 0)
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

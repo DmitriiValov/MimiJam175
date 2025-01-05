@@ -10,6 +10,7 @@ script = ExtResource("1_662xr")
 [node name="HUD" parent="." instance=ExtResource("1_djf0w")]
 
 [node name="CoinsLabel" type="Label" parent="HUD"]
+visible = false
 layout_mode = 0
 offset_left = 3.0
 offset_top = 5.0

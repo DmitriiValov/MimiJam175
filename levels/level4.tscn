@@ -1,9 +1,10 @@
-[gd_scene load_steps=24 format=4 uid="uid://c027k722jm440"]
+[gd_scene load_steps=25 format=4 uid="uid://c027k722jm440"]
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_2ojvn"]
 [ext_resource type="PackedScene" uid="uid://chq31ulyf4jfw" path="res://scenes/player.tscn" id="2_7pis6"]
 [ext_resource type="PackedScene" uid="uid://v5ad4ac8qqtf" path="res://scenes/bg.tscn" id="2_v23kh"]
 [ext_resource type="Texture2D" uid="uid://cdk336he5a0y7" path="res://assets/textures/bg/tomb2.png" id="2_vw1lt"]
+[ext_resource type="PackedScene" uid="uid://bs7lbq5cvpanf" path="res://scenes/win_screen.tscn" id="2_yldhe"]
 [ext_resource type="PackedScene" uid="uid://b13sctm3eklie" path="res://scenes/ui_layer.tscn" id="3_c430d"]
 [ext_resource type="PackedScene" uid="uid://0cii2tumbcwq" path="res://scenes/jump_pad.tscn" id="4_6yujh"]
 [ext_resource type="PackedScene" uid="uid://cisoml5n5tq12" path="res://scenes/saw.tscn" id="4_xpon8"]
@@ -48,7 +49,8 @@ shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_yyscj")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_2ojvn")
-level_time = 2000
+level_number = 4
+next_level = ExtResource("2_yldhe")
 is_final_level = true
 
 [node name="Coins" type="Node2D" parent="."]

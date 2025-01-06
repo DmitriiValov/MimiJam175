@@ -1,10 +1,12 @@
 extends Node2D
 
+@export var level_number: int = 1
+
 @onready var start_position = $Start
 @onready var exit = $Exit
 @onready var death_zone_down = $DeathzoneDown
 @onready var death_zone_up = $DeathzoneUp
-@onready var audio_player = AudioPlayer
+@onready var audio_player = get_node("/root/AudioPlayer")
 
 @onready var hud = $UILayer/HUD
 @onready var ui_layer = $UILayer
@@ -15,11 +17,17 @@ extends Node2D
 
 var player = null
 var timer_node = null
-var time_left
+var time_left = 200
 var win = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	print("Setting level number: ", level_number)
+	var scene_path = get_scene_file_path()
+	var level_num = scene_path.split("/")[-1].replace("level", "").replace(".tscn", "").to_int()
+	if level_num == 0: # Если это level.tscn (первый уровень)
+		level_num = 1
+	GameState.set_current_level(level_num)
 	player = get_tree().get_first_node_in_group("player")
 	if player != null:
 		player.global_position = start_position.get_spawn_position()
@@ -46,7 +54,8 @@ func _ready() -> void:
 		coin.coin_collected.connect(_on_coin_collected)
 
 func _on_coin_collected():
-		hud.add_coin()
+	GameState.add_coin()
+	hud.add_coin()
 
 func _on_level_timer_timeout():
 	if win == false:
@@ -78,7 +87,6 @@ func _on_trap_touched_player() -> void:
 func reset_player():
 	player.velocity = Vector2.ZERO
 	player.global_position = start_position.get_spawn_position()
-	hud.set_coins_label(0)
 	player.reset()
 
 func _on_exit_body_entered(body):
@@ -86,14 +94,23 @@ func _on_exit_body_entered(body):
 		load_next_level()
 
 func load_next_level():
-	if is_final_level || next_level != null:
+	if is_final_level:
 		exit.animate()
 		audio_player.play_sfx("win")
 		win = true
 		player.active = false
 		player.die()
 		await get_tree().create_timer(1.5).timeout
-		if is_final_level:
-			ui_layer.show_win_screen(true)
+		var win_screen_scene = preload("res://scenes/win_screen.tscn")
+		if win_screen_scene:
+			get_tree().change_scene_to_packed(win_screen_scene)
 		else:
-			get_tree().change_scene_to_packed(next_level)
+			push_error("Failed to load win screen scene!")
+	elif next_level != null:
+		exit.animate()
+		audio_player.play_sfx("win")
+		win = true
+		player.active = false
+		player.die()
+		await get_tree().create_timer(1.5).timeout
+		get_tree().change_scene_to_packed(next_level)

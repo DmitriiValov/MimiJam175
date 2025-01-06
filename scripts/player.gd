@@ -18,8 +18,8 @@ var gravity = true
 var in_jump = false
 var dashing = false
 var can_dash = true
-	
-func _physics_process(delta: float) -> void:	
+
+func _physics_process(delta: float) -> void:
 	change_gravity()
 	dash()
 
@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * -delta
 		if velocity.y < -500:
 			velocity.y = -500
-	 
+
 	if active == true:
 		if Input.is_action_just_pressed("jump") and is_on_floor() && gravity == true:
 			jump(JUMP_VELOCITY)
@@ -40,16 +40,17 @@ func _physics_process(delta: float) -> void:
 		elif Input.is_action_just_pressed("jump") and is_on_ceiling() && gravity == false:
 			jump(-JUMP_VELOCITY)
 			AudioPlayer.play_sfx("jump")
-						
+
 		if Input.get_axis("move_left", "move_right") != 0:
 			direction = Input.get_axis("move_left", "move_right")
-								
+
 		if is_on_wall():
-			direction *= -1
-			velocity.x = SPEED
-			dashing = false
-	
-	
+			if !Input.is_action_pressed("move_left") && !Input.is_action_pressed("move_right"):
+				direction *= -1
+				velocity.x = SPEED
+				dashing = false
+
+
 	if direction:
 		animated_sprite.flip_h = (direction == -1)
 		if dashing:
@@ -58,7 +59,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
+
 	update_animations(direction)
 
 	move_and_slide()
@@ -77,9 +78,9 @@ func update_animations(_direction):
 			if in_jump == true:
 				animated_sprite.play("fall")
 				in_jump = false
-			
+
 func jump(force):
-	velocity.y = force	
+	velocity.y = force
 
 func change_gravity():
 	if Input.is_action_pressed("change_gravity"):
@@ -89,11 +90,11 @@ func change_gravity():
 			animated_sprite.flip_v = false
 			animated_sprite.position = Vector2(0.0, -10.0)
 		elif gravity == true && is_on_floor() == true:
-			gravity = false 
+			gravity = false
 			AudioPlayer.play_sfx("jump")
 			animated_sprite.flip_v = true
 			animated_sprite.position = Vector2(0.0, 10.0)
-			
+
 func dash():
 	if Input.is_action_just_pressed("dash") && can_dash:
 		glow_sprite.visible = false
@@ -117,6 +118,6 @@ func _on_dash_timer_timeout() -> void:
 func _on_can_dash_timer_timeout() -> void:
 	can_dash = true
 	glow_sprite.visible = true
-	
+
 func die():
 	direction = 0

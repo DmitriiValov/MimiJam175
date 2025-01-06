@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://co3217qx18k52" path="res://levels/level3.tscn" id="2_n672o"]
 [ext_resource type="PackedScene" uid="uid://v5ad4ac8qqtf" path="res://scenes/bg.tscn" id="2_v23kh"]
 [ext_resource type="PackedScene" uid="uid://b13sctm3eklie" path="res://scenes/ui_layer.tscn" id="3_c430d"]
-[ext_resource type="PackedScene" uid="uid://d3s8w3727btl1" path="res://scenes/coin.tscn" id="3_sop8u"]
+[ext_resource type="PackedScene" uid="uid://d3s8w3727btl1" path="res://scenes/coin.tscn" id="3_t5n2w"]
 [ext_resource type="FontFile" uid="uid://d16hirl0bpmo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_xmtfy"]
 [ext_resource type="PackedScene" uid="uid://cisoml5n5tq12" path="res://scenes/saw.tscn" id="4_xpon8"]
 [ext_resource type="PackedScene" uid="uid://5iipgk4si3qv" path="res://scenes/spike_ball.tscn" id="5_t0v1i"]
@@ -47,43 +47,43 @@ shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_yyscj")
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_2ojvn")
+level_number = 2
 next_level = ExtResource("2_n672o")
-level_time = 2000
 
 [node name="Coins" type="Node2D" parent="."]
 position = Vector2(0, -53)
 
-[node name="coin" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(-250, 140)
 
-[node name="coin7" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin7" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(1128, 116)
 
-[node name="coin8" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin8" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(1228, 103)
 
-[node name="coin9" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin9" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(1287, 104)
 
-[node name="coin10" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin10" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(1338, 103)
 
-[node name="coin11" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin11" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(1402, 102)
 
-[node name="coin2" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin2" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(-270, 140)
 
-[node name="coin3" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin3" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(-210, 140)
 
-[node name="coin4" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin4" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(-290, 140)
 
-[node name="coin5" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin5" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(-230, 140)
 
-[node name="coin6" parent="Coins" instance=ExtResource("3_sop8u")]
+[node name="coin6" parent="Coins" instance=ExtResource("3_t5n2w")]
 position = Vector2(-11, 59)
 
 [node name="Hints" type="Node2D" parent="."]
@@ -115,7 +115,7 @@ offset_bottom = 127.0
 grow_horizontal = 2
 text = "L3
 Robertino, SashaV,
-Ranamzes, Astalozar"
+ReMART, Astalozar"
 label_settings = SubResource("LabelSettings_827oh")
 horizontal_alignment = 1
 vertical_alignment = 1

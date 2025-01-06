@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bs7lbq5cvpanf"]
+[gd_scene load_steps=6 format=3 uid="uid://bs7lbq5cvpanf"]
 
 [ext_resource type="Script" path="res://scripts/win_screen.gd" id="1_hcotr"]
 [ext_resource type="FontFile" uid="uid://d47d30frxoaw" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_xrvk7"]
@@ -9,6 +9,14 @@ font = ExtResource("1_xrvk7")
 font_size = 48
 outline_size = 13
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_stats"]
+font = ExtResource("1_xrvk7")
+font_size = 12
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0, 0, 0, 0.5)
 
 [node name="WinScreen" type="Control"]
 layout_mode = 3
@@ -41,6 +49,46 @@ text = "YOU WIN!
 label_settings = SubResource("LabelSettings_pfqtw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="StatsContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.528
+anchor_top = 0.544
+anchor_right = 0.528
+anchor_bottom = 0.544
+offset_left = -181.64
+offset_top = -114.56
+offset_right = 218.36
+offset_bottom = 185.44
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="Level1Stats" type="Label" parent="StatsContainer"]
+layout_mode = 2
+text = "LEVEL 1: 0/15"
+label_settings = SubResource("LabelSettings_stats")
+
+[node name="Level2Stats" type="Label" parent="StatsContainer"]
+layout_mode = 2
+text = "LEVEL 2: 0/11"
+label_settings = SubResource("LabelSettings_stats")
+
+[node name="Level3Stats" type="Label" parent="StatsContainer"]
+layout_mode = 2
+text = "LEVEL 3: 0/13"
+label_settings = SubResource("LabelSettings_stats")
+
+[node name="Level4Stats" type="Label" parent="StatsContainer"]
+layout_mode = 2
+text = "LEVEL 4: 0/17"
+label_settings = SubResource("LabelSettings_stats")
+
+[node name="TotalStats" type="Label" parent="StatsContainer"]
+layout_mode = 2
+text = "TOTAL: 0/56"
+label_settings = SubResource("LabelSettings_stats")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 1

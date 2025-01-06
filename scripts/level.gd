@@ -53,14 +53,6 @@ func _ready() -> void:
 
 	if exit != null && exit.has_signal("body_entered"):
 		exit.body_entered.connect(_on_exit_body_entered)
-func _on_level_timer_timeout():
-	if win == false:
-		time_left -= 1
-		hud.set_time_label(time_left)
-		if time_left < 0:
-			reset_player()
-			time_left = level_time
-			hud.set_time_label(time_left)
 
 	if death_zone_down != null:
 		death_zone_down.body_entered.connect(_on_deathzone_body_entered)
@@ -76,15 +68,14 @@ func _on_coin_collected():
 	GameState.add_coin()
 	hud.add_coin()
 
-
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
 	elif Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 	elif Input.is_action_just_pressed("skip_level"):
-		load_next_level()
-
+		if next_level != null:
+			load_next_level()
 
 func _on_deathzone_body_entered(_body: CharacterBody2D) -> void:
 	audio_player.play_sfx("hurt")

@@ -93,13 +93,12 @@ position = Vector2(0, -53)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 1212.0
+offset_left = 1172.0
 offset_top = 134.0
-offset_right = 1407.0
+offset_right = 1431.0
 offset_bottom = 157.0
 grow_horizontal = 2
-text = "Осталось совсем немного!
-"
+text = "There's only a little bit left!"
 label_settings = SubResource("LabelSettings_827oh")
 horizontal_alignment = 1
 vertical_alignment = 1

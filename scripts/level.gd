@@ -58,9 +58,9 @@ func _on_level_timer_timeout():
 			hud.set_time_label(time_left)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("quit"):
-		get_tree().quit()
-	elif Input.is_action_just_pressed("reset"):
+	#if Input.is_action_just_pressed("quit"):
+		#get_tree().quit()
+	if Input.is_action_just_pressed("reset"):
 		get_tree().reload_current_scene()
 	elif Input.is_action_just_pressed("skip_level"):
 		load_next_level()

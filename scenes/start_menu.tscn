@@ -57,6 +57,7 @@ theme_override_fonts/font = ExtResource("1_3j0gt")
 text = "Start"
 
 [node name="quitBtn" type="Button" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

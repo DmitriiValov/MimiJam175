@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://b13sctm3eklie" path="res://scenes/ui_layer.tscn" id="3_c430d"]
 [ext_resource type="PackedScene" uid="uid://0cii2tumbcwq" path="res://scenes/jump_pad.tscn" id="4_6yujh"]
 [ext_resource type="PackedScene" uid="uid://cisoml5n5tq12" path="res://scenes/saw.tscn" id="4_xpon8"]
-[ext_resource type="PackedScene" path="res://scenes/spike_ball.tscn" id="5_t0v1i"]
+[ext_resource type="PackedScene" uid="uid://5iipgk4si3qv" path="res://scenes/spike_ball.tscn" id="5_t0v1i"]
 [ext_resource type="PackedScene" uid="uid://dutfgtxc1xgju" path="res://scenes/tile_map.tscn" id="6_5873i"]
 [ext_resource type="PackedScene" uid="uid://mvlecmocoyrg" path="res://scenes/start.tscn" id="9_ur6it"]
 [ext_resource type="PackedScene" uid="uid://bhmgsuk0cyrid" path="res://scenes/exit.tscn" id="10_lfp4j"]
@@ -121,7 +121,7 @@ offset_top = 113.0
 offset_right = 568.0
 offset_bottom = 136.0
 grow_horizontal = 2
-text = "Тебе уже кажется что это похоже на Super Meat Boy?"
+text = "Does this look like Super Meat Boy to you?"
 label_settings = SubResource("LabelSettings_827oh")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -130,12 +130,13 @@ vertical_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 1341.0
-offset_top = 26.0
-offset_right = 1684.0
-offset_bottom = 49.0
+offset_left = 1340.0
+offset_top = 28.0
+offset_right = 1683.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "Ты нашел сокровища древних котов!"
+text = "You have found the 
+treasures of the ancient cats!"
 label_settings = SubResource("LabelSettings_827oh")
 horizontal_alignment = 1
 vertical_alignment = 1

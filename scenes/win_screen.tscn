@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs7lbq5cvpanf"]
+[gd_scene load_steps=7 format=3 uid="uid://bs7lbq5cvpanf"]
 
 [ext_resource type="Script" path="res://scripts/win_screen.gd" id="1_hcotr"]
 [ext_resource type="FontFile" uid="uid://d47d30frxoaw" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_xrvk7"]
 [ext_resource type="Texture2D" uid="uid://j3lw7665rdw0" path="res://assets/textures/bg/game_complete.jpg" id="2_d12or"]
+[ext_resource type="Texture2D" uid="uid://dis6qsi0r7c5e" path="res://assets/textures/bg/blackbox.png" id="4_8fq1c"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pfqtw"]
 font = ExtResource("1_xrvk7")
@@ -49,6 +50,11 @@ text = "YOU WIN!
 label_settings = SubResource("LabelSettings_pfqtw")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Blackbox" type="Sprite2D" parent="."]
+position = Vector2(65.625, 92.2031)
+scale = Vector2(0.214583, 0.179549)
+texture = ExtResource("4_8fq1c")
 
 [node name="StatsContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

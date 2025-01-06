@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/level.gd" id="1_2ojvn"]
 [ext_resource type="PackedScene" uid="uid://chq31ulyf4jfw" path="res://scenes/player.tscn" id="2_7pis6"]
-[ext_resource type="Texture2D" uid="uid://bk5pe6sr1yenb" path="res://assets/textures/bg/tomb.png" id="2_30veq"]
 [ext_resource type="PackedScene" uid="uid://v5ad4ac8qqtf" path="res://scenes/bg.tscn" id="2_v23kh"]
+[ext_resource type="Texture2D" uid="uid://cdk336he5a0y7" path="res://assets/textures/bg/tomb2.png" id="2_vw1lt"]
 [ext_resource type="PackedScene" uid="uid://b13sctm3eklie" path="res://scenes/ui_layer.tscn" id="3_c430d"]
 [ext_resource type="PackedScene" uid="uid://0cii2tumbcwq" path="res://scenes/jump_pad.tscn" id="4_6yujh"]
 [ext_resource type="PackedScene" uid="uid://cisoml5n5tq12" path="res://scenes/saw.tscn" id="4_xpon8"]
@@ -46,17 +46,16 @@ shader_parameter/distortion_strength = 0.015
 shader_parameter/noise_tex1 = SubResource("NoiseTexture2D_gkdko")
 shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_yyscj")
 
-[node name="Level4" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_2ojvn")
 level_time = 2000
 is_final_level = true
-level_name = "level4"
 
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Tomb" type="Sprite2D" parent="Coins"]
-position = Vector2(1505, 116)
-texture = ExtResource("2_30veq")
+position = Vector2(1503, 99)
+texture = ExtResource("2_vw1lt")
 
 [node name="coin" parent="Coins" instance=ExtResource("12_vxqck")]
 position = Vector2(474, 28)
@@ -129,10 +128,10 @@ vertical_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 1342.0
-offset_top = 18.0
-offset_right = 1685.0
-offset_bottom = 41.0
+offset_left = 1341.0
+offset_top = 26.0
+offset_right = 1684.0
+offset_bottom = 49.0
 grow_horizontal = 2
 text = "Ты нашел сокровища древних котов!"
 label_settings = SubResource("LabelSettings_827oh")

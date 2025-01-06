@@ -12,7 +12,6 @@ extends Node2D
 @export var next_level: PackedScene = null
 @export var level_time = 200
 @export var is_final_level: bool = false
-@export var level_name: String = "level1"
 
 var player = null
 var timer_node = null
@@ -47,8 +46,7 @@ func _ready() -> void:
 		coin.coin_collected.connect(_on_coin_collected)
 
 func _on_coin_collected():
-	hud.add_coin()
-	GameManager.add_coin(level_name)
+		hud.add_coin()
 
 func _on_level_timer_timeout():
 	if win == false:
@@ -95,7 +93,7 @@ func load_next_level():
 		player.active = false
 		player.die()
 		await get_tree().create_timer(1.5).timeout
-		if is_final_level && ui_layer != null:
+		if is_final_level:
 			ui_layer.show_win_screen(true)
-		elif next_level != null:
+		else:
 			get_tree().change_scene_to_packed(next_level)

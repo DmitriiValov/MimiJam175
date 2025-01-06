@@ -50,7 +50,6 @@ shader_parameter/noise_tex2 = SubResource("NoiseTexture2D_yyscj")
 script = ExtResource("1_2ojvn")
 next_level = ExtResource("2_yaplt")
 level_time = 2000
-level_name = "level3"
 
 [node name="Coins" type="Node2D" parent="."]
 position = Vector2(0, -11)

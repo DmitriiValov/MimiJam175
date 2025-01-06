@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bs7lbq5cvpanf"]
+[gd_scene load_steps=5 format=3 uid="uid://bs7lbq5cvpanf"]
 
 [ext_resource type="Script" path="res://scripts/win_screen.gd" id="1_hcotr"]
 [ext_resource type="FontFile" uid="uid://d47d30frxoaw" path="res://assets/fonts/Kenney Pixel Square.ttf" id="1_xrvk7"]
@@ -8,12 +8,6 @@
 font = ExtResource("1_xrvk7")
 font_size = 48
 outline_size = 13
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_stats"]
-font = ExtResource("1_xrvk7")
-font_size = 14
-outline_size = 8
 outline_color = Color(0, 0, 0, 1)
 
 [node name="WinScreen" type="Control"]
@@ -26,7 +20,7 @@ grow_vertical = 2
 script = ExtResource("1_hcotr")
 
 [node name="GameComplete" type="Sprite2D" parent="."]
-position = Vector2(204, 135)
+position = Vector2(193, 142)
 texture = ExtResource("2_d12or")
 
 [node name="Win" type="Label" parent="."]
@@ -63,28 +57,5 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_xrvk7")
 text = "OK..."
-
-[node name="StatsLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -178.0
-offset_top = -120.0
-offset_right = 203.0
-offset_bottom = 66.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "COLLECTED COINS: 0/56
-
-STATS BY LEVEL:
-LEVEL1: 0/15
-LEVEL2: 0/1
-LEVEL3: 0/13
-LEVEL4: 0/17"
-label_settings = SubResource("LabelSettings_stats")
-vertical_alignment = 1
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

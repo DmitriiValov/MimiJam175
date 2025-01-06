@@ -12,7 +12,7 @@ func get_level_max_coins(level: int) -> int:
         1: 15,
         2: 11,
         3: 13,
-        4: 17
+        4: 7
     }
     return max_coins.get(level, 0)
 

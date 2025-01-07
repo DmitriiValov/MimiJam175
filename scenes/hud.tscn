@@ -1,13 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvrplyhvqe61m"]
+[gd_scene load_steps=2 format=3 uid="uid://cvrplyhvqe61m"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_4at64"]
-[ext_resource type="FontFile" uid="uid://d16hirl0bpmo7" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_dyiy0"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_mg2qh"]
-font = ExtResource("2_dyiy0")
-font_size = 12
-outline_size = 3
-outline_color = Color(0.13, 0.13, 0.13, 1)
 
 [node name="HUD" type="Control"]
 layout_mode = 3

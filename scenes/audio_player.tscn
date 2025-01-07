@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b5axd53yy3cy1"]
+[gd_scene load_steps=8 format=3 uid="uid://b5axd53yy3cy1"]
 
 [ext_resource type="Script" path="res://scripts/audio_player.gd" id="1_wqo1u"]
 [ext_resource type="AudioStream" uid="uid://s33py0qxjqp1" path="res://assets/audio/DD3wIrLB51tkkg.mp3" id="2_oqjfw"]
 [ext_resource type="AudioStream" uid="uid://sa0mw82f12jy" path="res://assets/audio/coin.wav" id="3_coin"]
 [ext_resource type="AudioStream" uid="uid://b71c3kkm60y84" path="res://assets/audio/jump.wav" id="4_jump"]
 [ext_resource type="AudioStream" uid="uid://byb4427q1fybl" path="res://assets/audio/hurt.wav" id="5_hurt"]
+[ext_resource type="AudioStream" uid="uid://dg668yx8vt580" path="res://assets/audio/dash.wav" id="5_oro1b"]
 [ext_resource type="AudioStream" uid="uid://cv8or033m8bht" path="res://assets/audio/win.wav" id="6_win"]
 
 [node name="AudioPlayer" type="Node"]
@@ -22,6 +23,10 @@ volume_db = -19.019
 
 [node name="JumpPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_jump")
+volume_db = -8.0
+
+[node name="DashPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_oro1b")
 volume_db = -8.0
 
 [node name="HurtPlayer" type="AudioStreamPlayer" parent="."]

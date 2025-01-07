@@ -5,6 +5,7 @@ extends Node
 @onready var jump_player = $JumpPlayer
 @onready var hurt_player = $HurtPlayer
 @onready var win_player = $WinPlayer
+@onready var dash_player = $DashPlayer
 
 func _ready() -> void:
 	music_player.connect("finished", Callable(self, "_on_loop_sound").bind(music_player))
@@ -21,7 +22,7 @@ func play_sfx(sfx_name: String):
 		"win":
 			win_player.play()
 		"dash":
-			jump_player.play() # Используем звук прыжка для dash
+			dash_player.play() # Используем звук прыжка для dash
 		_:
 			print("Invalid sfx name")
 
